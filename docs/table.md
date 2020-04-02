@@ -124,6 +124,7 @@ export default {
     reload() {
       this.tb.page = 1
       this.tb.data = []
+      this.tb.total = 0
       // 如果当前还在请求状态，则会取消当前请求（需要手动配置）
       if (this.tb.cancelToken && this.tb.cancelToken.cancel) {
         this.tb.cancelToken.cancel('取消请求')
