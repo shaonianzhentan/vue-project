@@ -1,0 +1,19 @@
+{
+    "useConfigFiles": true,
+    "useTaobaoRegistry": true,
+    "cssPreprocessor": "less",
+    "routerHistoryMode": false,
+    "router": true,
+    "plugins": {
+        "@vue/cli-plugin-eslint": {
+            "prompts": true
+        },
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-vuex": {
+            "prompts": true
+        }
+    },
+    "configs": {
+        "vue": {}
+    }
+}
