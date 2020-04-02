@@ -6,4 +6,4 @@
 
 > 联系方式：`QQ: 635147515`
 
-> 项目地址：[https://github.com/shaonianzhentan/vue-project](https://github.com/shaonianzhentan/vue-project)
+> 源码地址：[https://github.com/shaonianzhentan/vue-project](https://github.com/shaonianzhentan/vue-project)
