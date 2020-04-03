@@ -349,6 +349,86 @@ function query (key) {
 
 ```
 
+# 小数位长度 - pointLength
+
+> 使用方式
+```js
+let val = this.api.pointLength(0.0003)
+// val = 4
+```
+
+> 源码解析
+```js
+  pointLength(value) {
+    // 验证当前传入值的类型
+    if (!this.validate.isNumber(value) && !this.validate.isString(value)) {
+      throw new Error(`要验证的值类型不是String | Number`)
+    }
+    // 如果是数字，则转为字符串
+    if (this.validate.isNumber(value)) {
+      value = String(value)
+    }
+    let arr = value.split('.')
+    if (arr.length === 2) {
+      return arr[1].length
+    }
+    return 0
+  }
+
+```
+
+# 数组累加 - sum
+
+> 使用方式
+```js
+// 解决小数位数字运算的问题
+let val = this.api.sum([0.0001, 0.0002, 0.0003])
+// val = 0.0006
+
+```
+
+!> 注意：在js中小数的运算操作会有精度问题`0.0001 + 0.0002 + 0.0003 = 0.0006000000000000001`
+
+> 源码解析
+```js
+  /**
+   * 总和
+   * @param {Array} arr - 要计算的数组
+   * @param {Boolean} isSubtract - 是否采用累减计算（默认采用累加计算）
+   */
+  sum(arr, isSubtract = false) {
+    // 判断传入arry不是数组直接返回
+    if (!Array.isArray(arr)) throw new Error('【this.api.sum】传入的不是数组')
+    // 储存小数点后位数
+    let point = 0
+    // 判断数组内部各项是否为数字 判断小数点位数
+    for (let i = 0; i < arr.length; i++) {
+      // 判断数组中是否为全数字
+      let value = arr[i]
+      if (typeof value !== 'number' || Number.isNaN(value)) throw new Error(`【this.api.sum】数组索引第${i}项不是数字`)
+      // 获取小数点后位数
+      let len = this.pointLength(value)
+      if (point < len) point = len
+    }
+    // 取整放大倍数
+    let maxPoint = Math.pow(10, point)
+    // 累加结果字段
+    let sum = arr.reduce(function (prev, cur, index) {
+      if (isSubtract) {
+        if (index === 0) {
+          return cur * maxPoint
+        } else {
+          return prev - (cur * maxPoint)
+        }
+      } else {
+        return (cur * maxPoint) + prev
+      }
+    }, 0)
+    return sum / maxPoint
+  }
+
+```
+
 # 动态引入组件 - component
 
 ```
