@@ -1,26 +1,5 @@
 # API - 接口方法
 ---
-# 微信接口 - wxReady
-
-```js
-
-this.api.wxReady(wxapi => {
-    // wxapi是微信api的实例，调用方法使用Promise方式
-})
-
-```
-
-
-# 阿里云上传 - ossReady
-
-```js
-
-this.api.ossReady(ossapi => {
-    // ossapi是自定义的阿里云上传的实例，调用方法参考文档
-})
-
-```
-
 
 # 防抖 - debounce
 

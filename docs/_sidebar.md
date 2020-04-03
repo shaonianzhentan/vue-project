@@ -9,7 +9,8 @@
   - [接口服务 - service](api_service.md)
   - [验证服务 - validate](api_validate.md)
   - [数据存储 - storage](api_storage.md)
-
+  - [微信接口](api_wx.md)
+  - [阿里云存储](api_oss.md)
 
 - 全局定义
 
