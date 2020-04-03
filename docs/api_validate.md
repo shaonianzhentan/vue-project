@@ -14,6 +14,22 @@ const b = this.api.validate.isIE
 !!window.ActiveXObject || "ActiveXObject" in window
 ```
 
+## 是否正整数 - isInteger
+> 使用方式
+```js
+const b = this.api.validate.isInteger(1)
+// 返回值：b = true
+```
+
+> 源码解析
+```js
+isInteger(value) {
+    return /^\d+$/.test(value) && value != 0
+}
+```
+
+!> 注：这里只判断 `正整数`，不包含`负整数` 和 `0`
+
 ## 是否为空 - isEmpty
 > 使用方式
 ```js
