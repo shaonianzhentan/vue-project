@@ -20,6 +20,9 @@
 
 - 全局组件
   - [分页表格 - table](table.md)
+  - [图标 - icon](icon.md)
+  - [数字输入框 - input-number](input_number.md)
+  - [编辑器 - editor](editor.md)
   - [待更新...](table.md)  
 
 - 工具插件
