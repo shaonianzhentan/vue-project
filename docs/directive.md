@@ -84,7 +84,7 @@ export default {
             }else if(typeof value === 'function'){
                 value(() => {
                     el.removeAttribute('disabled')
-                })
+                }, event)
             }
         }
     }
