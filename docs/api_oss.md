@@ -9,6 +9,33 @@ this.api.ossReady(ossapi => {
 })
 ```
 
+> 源码解析
+```js
+  // 阿里OSS上传
+  async ossReady() {
+    // 如果视频点播上传和OSS上传没有定义，则加载对应的js库
+    if (typeof window.AliyunUpload === 'undefined' || typeof window.OSS === 'undefined') {
+      // 异步加载相关的js库
+      await this.loader('./js/aliyun-oss-sdk-5.2.0.min.js')
+      await this.loader('./js/aliyun-upload-sdk-1.4.0.min.js')
+    }
+    // 获取参数    
+    const ossService = new OssService()
+    ossService.config({
+      accessKeyId: '密钥ID',
+      accessKeySecret: '密钥',
+      bucket: 'bucket',
+      endpoint: 'https://xxx.com',
+      path: '这里是/存放的/路径/哦'
+    })
+    ossService.onsuccess = (data) => {
+      // 这里请求接口，通知后端上传成功了
+      // data: 是回传的参数哦
+    }
+    return ossService
+  }
+```
+
 ## 上传文件 - upload
 > 使用方式
 ```js
