@@ -45,10 +45,80 @@ v-role:system-user-add = "{ validate: haveRole.bind(this, { msg: '你好棒棒�
 ```
 
 > 源码解析
+
+!> 注意：需要后端有对应的权限设计表，这一块有一整套设计思路，这里仅仅是使用方法
+
 ```js
+import store from '../store'
+/**
+ * 权限指令
+ * 
+ * v-role:system-test-list
+ * v-role:system-test-list="{validate:haveRole}"
+ * v-role:system-test-list="{or:['system-test-add']}"
+ * v-role:system-test-list="{and:['system-test-add']}"
+ * 
+ */
+export default {
+  bind: function (el, binding) {
+    try {
+      const { arg, value } = binding
+      let role = arg
+
+      // 判断是否以字符串形式传值
+      if (!arg && Object.prototype.toString.call(value) === '[object String]') {
+        role = value
+      }
+
+      // 获取所有权限
+      let roleArr = []
+      if (store.state.userInfo) roleArr = store.state.userInfo.role
+      // 判断是否包含权限
+      let isRole = roleArr.includes(role)
+      if (value) {
+        // 如果传的是对象
+        if (Object.prototype.toString.call(value) === '[object Object]') {
+          // 如果当前没有权限，则验证是否包含其它权限
+          if (Array.isArray(value.or) && isRole === false) {
+            isRole = value.or.some(ele => {
+              return roleArr.includes(ele)
+            })
+          }
+          // 如果当前有权限，则还要验证是否拥有所有定义的权限
+          if (Array.isArray(value.and) && isRole === true) {
+            isRole = value.or.every(ele => {
+              return roleArr.includes(ele)
+            })
+          }
+
+          // 加入权限验证回调
+          if (value.validate && typeof value.validate === 'function') {
+            value.validate(isRole)
+          }
+        }
+      }
+
+      // 如果当前权限不存在，则删除元素
+      if (isRole === false) {
+        // 如果没有父节点（无法删除，只能隐藏）
+        setTimeout(() => {
+          if (el.parentNode) {
+            el.parentNode.removeChild(el)
+          } else {
+            el.innerHTML = ''
+            el.style.display = 'none'
+          }
+        }, 0)
+      }
+    } catch (ex) {
+      console.warn(ex)
+    }
+  }
+}
 
 ```
-!> 注意：需要后端有对应的权限设计表，这一块有一整套设计思路，这里仅仅是使用方法
+
+!> 如果没有父节点，可以使用`inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
 
 
 # 点击 - click
