@@ -23,11 +23,12 @@
   - [状态管理 - state](state.md)
   
 - 全局组件
-  - [分页表格 - table](table.md)
-  - [图标 - icon](icon.md)
-  - [数字输入框 - input-number](input_number.md)
-  - [编辑器 - editor](editor.md)
-  - [待更新...](table.md)  
+  - [分页表格 - table](mw-table.md)
+  - [图标 - icon](mw-icon.md)
+  - [数字输入框 - input-number](mw-input-number.md)
+  - [编辑器 - editor](mw-editor.md)
+  - [上传图片 - upload-image](mw-upload-image.md)
+  - [待更新...](mw-table.md)
 
 - 工具插件
   - [Visual Studio Code 插件](vscode.md)
