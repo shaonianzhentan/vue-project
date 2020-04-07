@@ -410,6 +410,46 @@ let val = this.api.sum([0.0001, 0.0002, 0.0003])
 
 # 动态引入组件 - component
 
+> 使用方式
+```js
+import UserEdit from '@/components/system/UserEdit'
+
+// 方式一：传入props参数
+this.api.component(UserEdit, {
+    type: "我是props参数"
+  }).then(() => {
+    console.log('一般是弹窗点击确认或啥的')
+  }).catch(()=>{
+    console.log('弹窗关闭啦!!!')
+  })
+
+// 方式二：使用vue组件原生参数
+this.api.component(UserEdit, {
+    type: "我是props参数"
+  }, {
+    mounted(){
+      console.log('生命周期：mounted')
+    }
+  }).then(() => {
+    console.log('一般是弹窗点击确认或啥的')
+  }).catch(()=>{
+    console.log('弹窗关闭啦!!!')
+  })
 ```
-// 正在整理中...
+
+> 源码解析
+```js
+async _component(component, propsData = {}, constructorArgs = {}) {
+    let _constructor = Vue.extend(component)
+    return new Promise((resolve, reject) => {
+      let instance = new _constructor({
+        ...constructorArgs,
+        propsData,
+      }).$mount(document.createElement('div'))
+      instance.$on('done', data => resolve(data))
+      instance.$on('close', data => reject(data))
+    })
+  }
 ```
+
+!> 以上`_component`是核心方法，进行了二次封装后的是`component`方法，注入了`router`、`store`
