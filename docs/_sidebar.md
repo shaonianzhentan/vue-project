@@ -18,7 +18,8 @@
   - [过滤器 - filter](filter.md)
   - [指令 - directive](directive.md)
   - [路由 - router](router.md)
-
+  - [状态管理 - state](state.md)
+  
 - 全局组件
   - [分页表格 - table](table.md)
   - [图标 - icon](icon.md)
