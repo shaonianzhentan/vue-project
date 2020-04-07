@@ -2,6 +2,8 @@
 
 ---
 
+## 初始化加载
+
 > 使用方式
 ```html
 
@@ -38,6 +40,59 @@
   }
 </script>
 ```
+
+## 初始化条件加载
+?> `condition`是初始化的条件参数对象
+```html
+<mw-table ref="MwTable" :load="loadData" :condition="{ type: 1 }">
+      <el-table-column prop="index" label="序号" width="50"></el-table-column>
+      <el-table-column prop="nickName" label="微信昵称" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="tel" label="手机号" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="content" label="反馈内容" show-overflow-tooltip></el-table-column>
+</mw-table>
+```
+
+## 禁止初始化加载
+?> `firstLoad`是否首次加载（默认为true），可以通过调用`search方法`进行加载
+```html
+<mw-table ref="MwTable" :firstLoad="false" :load="loadData" :condition="{ type: 1 }">
+      <el-table-column prop="index" label="序号" width="50"></el-table-column>
+      <el-table-column prop="nickName" label="微信昵称" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="tel" label="手机号" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="content" label="反馈内容" show-overflow-tooltip></el-table-column>
+</mw-table>
+```
+
+## 搜索
+```js
+this.$refs['MwTable'].search({ /* 这里是参数 */ })
+```
+
+## 重新加载
+?> 指的是从表格的`第1页`开始重新加载数据
+```js
+this.$refs['MwTable'].reload()
+```
+
+## 刷新
+?> 重新加载`当前表格`的数据
+```js
+this.$refs['MwTable'].refresh()
+```
+
+## 执行操作
+```js
+this.$refs['MwTable'].action(async () => {
+  // 操作中...
+
+  // 新增重新加载表格
+  // return 'reload'
+  // 或
+  // 编辑或删除后刷新表格
+  // return 'refresh'
+})
+```
+!> 注意：在使用`action方法`时，表格会有`loading遮罩`显示
 
 > 源码解析
 
