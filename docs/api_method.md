@@ -412,6 +412,7 @@ let val = this.api.sum([0.0001, 0.0002, 0.0003])
 
 > 使用方式
 ```js
+// 引入组件
 import UserEdit from '@/components/system/UserEdit'
 
 // 方式一：传入props参数
