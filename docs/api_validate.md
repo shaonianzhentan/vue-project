@@ -14,6 +14,18 @@ const b = this.api.validate.isIE
 !!window.ActiveXObject || "ActiveXObject" in window
 ```
 
+## 是否iOS系统 - isIOS
+> 使用方式
+```js
+const b = this.api.validate.isIOS
+// 返回值：b = true
+```
+
+> 源码解析
+```js
+/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
+```
+
 ## 是否正整数 - isInteger
 > 使用方式
 ```js
