@@ -1,0 +1,155 @@
+[
+  
+    {
+      "name": "isIE",
+      "type": "Field",
+      "detail": "判断是否IE浏览器",
+      "filterText": "_isIE",
+      "insertText": "isIE",
+      "hover": ""
+    },
+    {
+        "name": "isIOS",
+        "type": "Field",
+        "detail": "判断是否iOS系统",
+        "filterText": "_isIOS",
+        "insertText": "isIOS",
+        "hover": ""
+      },
+    {
+      "name": "isInteger",
+      "type": "Method",
+      "detail": "验证是否整数",
+      "filterText": "_isInteger",
+      "insertText": "isInteger(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isEmpty",
+      "type": "Method",
+      "detail": "判断是否为空（除数字为0之外的, !value判断）",
+      "filterText": "_isEmpty",
+      "insertText": "isEmpty(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isEmail",
+      "type": "Method",
+      "detail": "验证是否邮箱格式",
+      "filterText": "_isEmail",
+      "insertText": "isEmail(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isIDCard",
+      "type": "Method",
+      "detail": "验证身份证",
+      "filterText": "_isIDCard",
+      "insertText": "isIDCard(要验证的身份证)",
+      "hover": ""
+    },
+    {
+      "name": "isPhoneNumber",
+      "type": "Method",
+      "detail": "验证手机号码",
+      "filterText": "_isPhoneNumber",
+      "insertText": "isPhoneNumber(要验证的手机号码)",
+      "hover": ""
+    },
+    {
+      "name": "isInputString",
+      "type": "Method",
+      "detail": "验证是否可输入字符串",
+      "filterText": "_isInputString",
+      "insertText": "isInputString(验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isChineseChar",
+      "type": "Method",
+      "detail": "是否包含中文",
+      "filterText": "_isChineseChar",
+      "insertText": "isChineseChar(验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isEmoji",
+      "type": "Method",
+      "detail": "是否包含emojo表情符号",
+      "filterText": "_isEmoji",
+      "insertText": "isEmoji(验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isString",
+      "type": "Method",
+      "detail": "验证是否String类型",
+      "filterText": "_isString",
+      "insertText": "isString(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isNumber",
+      "type": "Method",
+      "detail": "验证是否Number类型",
+      "filterText": "_isNumber",
+      "insertText": "isNumber(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isBoolean",
+      "type": "Method",
+      "detail": "验证是否Boolean类型",
+      "filterText": "_isBoolean",
+      "insertText": "isBoolean(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isNull",
+      "type": "Method",
+      "detail": "验证是否Null类型",
+      "filterText": "_isNull",
+      "insertText": "isNull(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isUndefined",
+      "type": "Method",
+      "detail": "验证是否Undefined类型",
+      "filterText": "_isUndefined",
+      "insertText": "isUndefined(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isSymbol",
+      "type": "Method",
+      "detail": "验证是否Symbol类型",
+      "filterText": "_isSymbol",
+      "insertText": "isSymbol(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isFunction",
+      "type": "Method",
+      "detail": "验证是否Function类型",
+      "filterText": "_isFunction",
+      "insertText": "isFunction(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isObject",
+      "type": "Method",
+      "detail": "验证是否Object类型",
+      "filterText": "_isObject",
+      "insertText": "isObject(要验证的值)",
+      "hover": ""
+    },
+    {
+      "name": "isArray",
+      "type": "Method",
+      "detail": "验证是否Array类型",
+      "filterText": "_isArray",
+      "insertText": "isArray(要验证的值)",
+      "hover": ""
+    }
+  ]
