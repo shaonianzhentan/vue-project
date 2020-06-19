@@ -1,0 +1,122 @@
+[
+    {
+        "name": "uuid",
+        "type": "Field",
+        "detail": "生成uuid",
+        "filterText": "_uuid",
+        "insertText": "",
+        "hover": ""
+    },
+    {
+        "name": "debounce",
+        "type": "Method",
+        "detail": "防抖",
+        "filterText": "_debounce",
+        "insertText": "debounce(() => { }, 1000)",
+        "hover": ""
+    },
+    {
+        "name": "throttle",
+        "type": "Method",
+        "detail": "节流",
+        "filterText": "_throttle",
+        "insertText": "throttle(() => { }, 1000)",
+        "hover": ""
+    },
+    {
+        "name": "clipboard",
+        "type": "Method",
+        "detail": "剪切板操作",
+        "filterText": "_clipboard",
+        "insertText": "clipboard(text)",
+        "hover": ""
+    },
+    {
+        "name": "sum",
+        "type": "Method",
+        "detail": "合计 \n 参数一{Array} - 存放数字的数组 \n 参数二{Boolean} - 是否累减(默认累加)",
+        "filterText": "_sum",
+        "insertText": "sum(存放数字的数组)",
+        "hover": ""
+    },
+    {
+        "name": "pointLength",
+        "type": "Method",
+        "detail": "计算小数点后面的数字长度",
+        "filterText": "_pointLength",
+        "insertText": "pointLength(要计算的值)",
+        "hover": ""
+    },
+    {
+        "name": "loader",
+        "type": "Method",
+        "detail": "动态加载js、css文件",
+        "filterText": "_loader",
+        "insertText": "loader(要加载的文件)",
+        "hover": ""
+    },
+    {
+        "name": "query",
+        "type": "Method",
+        "detail": "url参数查询",
+        "filterText": "_query",
+        "insertText": "query(参数名称)",
+        "hover": ""
+    },
+    {
+        "name": "clone",
+        "type": "Method",
+        "detail": "基础版深度克隆",
+        "filterText": "_clone",
+        "insertText": "clone(对象)",
+        "hover": ""
+    },
+    {
+        "name": "service",
+        "type": "Class",
+        "detail": "接口服务类",
+        "filterText": "_service",
+        "insertText": "",
+        "hover": ""
+      },
+      {
+        "name": "storage",
+        "type": "Class",
+        "detail": "数据存储类",
+        "filterText": "_storage",
+        "insertText": "",
+        "hover": ""
+      },
+      {
+        "name": "validate",
+        "type": "Class",
+        "detail": "数据验证类",
+        "filterText": "_validate",
+        "insertText": "",
+        "hover": ""
+      },
+      {
+        "name": "vodReady",
+        "type": "Method",
+        "detail": "阿里视频点播",
+        "filterText": "_vodReady",
+        "insertText": "vodReady().then((vodService)=>{ \n //vodService是上传实例 \n})",
+        "hover": ""
+      },
+      {
+        "name": "ossReady",
+        "type": "Method",
+        "detail": "阿里OSS上传",
+        "filterText": "_ossReady",
+        "insertText": "ossReady().then((ossService)=>{ \n //ossService是上传实例 \n})",
+        "hover": ""
+      },
+      {
+        "name": "wxReady",
+        "type": "Method",
+        "detail": "微信接口",
+        "filterText": "_wxReady",
+        "insertText": "wxReady().then((wxapi)=>{ \n //wxapi调用微信接口返回Promise对象 \n})",
+        "hover": ""
+      }
+]
