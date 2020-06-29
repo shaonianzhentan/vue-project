@@ -5,7 +5,6 @@
  * 更新日期：
  */
 export default class {
-
     /**
      * 初始实例
      * @param {String} prefix - 键名前缀
@@ -18,7 +17,7 @@ export default class {
 
     /**
      * 获取实际存储的key值
-     * @param {String} key 
+     * @param {String} key
      */
     getKey(key) {
         return `${this.prefix}${key}`
@@ -26,11 +25,11 @@ export default class {
 
     /**
      * 获取本地存储的值
-     * @param {String} key 
+     * @param {String} key
      */
     get(key) {
         try {
-            let result = JSON.parse(localStorage.getItem(this.getKey(key)))
+            const result = JSON.parse(localStorage.getItem(this.getKey(key)))
             return result.value
         } catch (ex) {
             // console.log(ex)
@@ -40,8 +39,8 @@ export default class {
 
     /**
      * 设置本地存储的值
-     * @param {String} key 
-     * @param {Any} value 
+     * @param {String} key
+     * @param {Any} value
      */
     set(key, value) {
         // 判断当前给的键，是否预定义过
@@ -56,7 +55,7 @@ export default class {
 
     /**
      * 移除本地储存的值
-     * @param {String} key 
+     * @param {String} key
      */
     remove(key) {
         localStorage.removeItem(this.getKey(key))
@@ -64,11 +63,11 @@ export default class {
 
     /**
      * 获取临时存储的值
-     * @param {String} key 
+     * @param {String} key
      */
     getSession(key) {
         try {
-            let result = JSON.parse(sessionStorage.getItem(this.getKey(key)))
+            const result = JSON.parse(sessionStorage.getItem(this.getKey(key)))
             return result.value
         } catch (ex) {
             // console.log(ex)
@@ -78,8 +77,8 @@ export default class {
 
     /**
      * 设置临时存储的值
-     * @param {String} key 
-     * @param {Any} value 
+     * @param {String} key
+     * @param {Any} value
      */
     setSession(key, value) {
         // 判断当前给的键，是否预定义过
@@ -94,7 +93,7 @@ export default class {
 
     /**
      * 移除临时存储的值
-     * @param {String} key 
+     * @param {String} key
      */
     removeSession(key) {
         sessionStorage.removeItem(this.getKey(key))
@@ -119,11 +118,11 @@ export default class {
      * @param {Object} day - 参数
      */
     setCookie(name, value, { domain, path, expires }) {
-        let arr = []
+        const arr = []
         if (domain) arr.push('domain=' + domain)
         if (path) arr.push('path=' + domain)
         if (expires) arr.push('expires=' + expires)
-        let str = arr.length > 0 ? arr.join('; ') : ''
+        const str = arr.length > 0 ? arr.join('; ') : ''
 
         document.cookie = name + '=' + value + '; ' + str
     }
@@ -133,7 +132,7 @@ export default class {
      * @param {String} name - 名称
      */
     removeCookie(name) {
-        let today = new Date()
+        const today = new Date()
         today.setDate(today.getDate() - 1)
         this.setCookie(name, '', {
             expires: today
