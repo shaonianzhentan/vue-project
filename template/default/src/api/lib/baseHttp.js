@@ -14,15 +14,21 @@ class BaseHTTP {
   constructor({ baseURL }) {
     const http = axios.create({ baseURL })
     http.interceptors.response.use(function (response) {
-      const res = http.custom_interceptors.success(response)
-      if (res) {
-        return res
+      // 如果没有定义，则不使用
+      if (http.custom_interceptors) {
+        const res = http.custom_interceptors.success(response)
+        if (res) {
+          return res
+        }
       }
       return response
     }, function (error) {
-      const res = http.custom_interceptors.error(error)
-      if (res) {
-        error = res
+      // 如果没有定义，则不使用
+      if (http.custom_interceptors) {
+        const res = http.custom_interceptors.error(error)
+        if (res) {
+          error = res
+        }
       }
       // 这里做错误处理
       return Promise.reject(error)
