@@ -5,7 +5,7 @@
 > 使用方式
 ```html
 <!-- 普通用法 -->
-<button v-role.system-user-add>添加用户</button>
+<button v-role:system-user-add>添加用户</button>
 
 ```
 ```html
