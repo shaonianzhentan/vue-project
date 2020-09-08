@@ -3,6 +3,32 @@
 
 !> 注意：为全局选择组件而设计
 
+> 组件应用
+
+```html
+<!-- 
+   兼容ElementUI选择器组件所有参数和事件
+   事件：@data-change
+   事件额外参数：:change-params
+-->
+<zp-select-position v-model="state" clearable filterable text="全部"  @data-change="dataChange" :change-params="1" />
+
+<script>
+export default {
+  data() {
+    return {
+      state: ''
+    }
+  },
+  methods: {
+    dataChange (item, params) {
+      console.log(item, params)
+    }
+  }
+}
+</script>
+```
+
 > 使用方式
 
 ```html
@@ -44,6 +70,8 @@ export default {
   </el-select>
 </template>
 <script>
+/* eslint-disable dot-notation */
+/* eslint-disable eqeqeq */
 export default {
   name: 'ZpSelect',
   props: {
@@ -77,7 +105,9 @@ export default {
       default() {
         return false
       }
-    }
+    },
+    // 更新事件的额外参数
+    changeParams: {}
   },
   data() {
     return {
@@ -135,14 +165,14 @@ export default {
       })
     },
     change(value) {
-      const { identity, select } = this
+      const { identity, select, changeParams } = this
       const data =
         select.data.find(ele => {
           // 使用全等
           return identity ? ele._id === value : ele._id == value
         }) || {}
       this.$emit('input', value)
-      this.$emit('change', data)
+      this.$emit('data-change', data, changeParams)
     }
   }
 }
