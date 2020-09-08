@@ -25,6 +25,7 @@
 - 全局组件
   - [分页表格 - table](mw-table.md)
   - [图标 - icon](mw-icon.md)
+  - [选择框 - select](mw-select.md)
   - [数字输入框 - input-number](mw-input-number.md)
   - [编辑器 - editor](mw-editor.md)
   - [上传图片 - upload-image](mw-upload-image.md)
