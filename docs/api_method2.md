@@ -135,7 +135,7 @@ loading.close()
         setTimeout(() => {
           resolve({
             instance: loading,
-            close: loading.close
+            close: loading.close.bind(loading)
           })
         }, options['delay'])
       })
@@ -143,7 +143,7 @@ loading.close()
       let loading = Loading.service(params)
       return {
         instance: loading,
-        close: loading.close
+        close: loading.close.bind(loading)
       }
     }
   }
