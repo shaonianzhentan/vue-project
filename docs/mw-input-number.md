@@ -32,7 +32,7 @@ export default {
   watch: {
     ["$attrs.value"](val) {
       // 如果当前值为空，则设置为undefined
-      if (!val) {
+      if (!val && val !== 0) {
         let elInputNumber = this.$refs["elInputNumber"];
         if (elInputNumber) {
           elInputNumber.$emit("input", undefined);
