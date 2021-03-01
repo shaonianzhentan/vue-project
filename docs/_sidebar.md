@@ -7,6 +7,7 @@
   - [属性](api_field.md)
   - [内置方法](api_method.md)
   - [扩展方法](api_method2.md)
+  - [接口服务 - http](api_http.md)
   - [接口服务 - service](api_service.md)
   - [验证服务 - validate](api_validate.md)
   - [数据存储 - storage](api_storage.md)

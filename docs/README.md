@@ -8,4 +8,7 @@
 
 > 源码地址：[https://github.com/shaonianzhentan/vue-project](https://github.com/shaonianzhentan/vue-project)
 
-> 更新日期：`2020-9-8`
+> 更新日期：`2021-3-1`
+
+
+!> 注意：第一版本已经停止维护更新，需要查看文档请切换至`v1.0`查看

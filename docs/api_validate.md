@@ -26,7 +26,7 @@ const b = this.api.validate.isIOS
 /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)
 ```
 
-## 是否正整数 - isInteger
+## 是否整数 - isInteger
 > 使用方式
 ```js
 const b = this.api.validate.isInteger(1)
@@ -36,11 +36,35 @@ const b = this.api.validate.isInteger(1)
 > 源码解析
 ```js
 isInteger(value) {
-    return /^\d+$/.test(value) && value != 0
+    return /^\d+$/.test(value)
 }
 ```
 
-!> 注：这里只判断 `正整数`，不包含`负整数` 和 `0`
+## 是否浮点数 - isFloat
+> 使用方式
+```js
+this.api.validate.isFloat(1) // true
+this.api.validate.isFloat(1, 1) // true
+
+this.api.validate.isFloat(1.21, 1) // false
+```
+
+> 源码解析
+```js
+/**
+ * 是否浮点数
+ * @param {Any} value - 验证字符串
+ * @param {Integer} bit - 小数位长度
+ */
+isFloat(value, bit = 0) {
+    if (bit > 1) {
+        bit = `1,${bit}`
+    }
+    const regStr = `^\\d+(\\.\\d{${bit}})?$`
+    const reg = new RegExp(regStr)
+    return reg.test(value)
+}
+```
 
 ## 是否为空 - isEmpty
 > 使用方式
