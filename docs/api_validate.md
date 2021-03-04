@@ -258,7 +258,6 @@ function isEmoji (value) {
 
 ```
 
-
 ## 是否String类型 - isString
 > 使用方式
 ```js
@@ -314,7 +313,6 @@ const b = this.api.validate.isNull(val)
 Object.prototype.toString.call(value) === '[object Null]'
 ```
 
-
 ## 是否Undefined类型 - isUndefined
 > 使用方式
 ```js
@@ -326,6 +324,19 @@ const b = this.api.validate.isUndefined(val)
 > 源码解析
 ```js
 Object.prototype.toString.call(value) === '[object Undefined]'
+```
+
+## 是否Error类型 - isError
+> 使用方式
+```js
+const val;
+const b = this.api.validate.isError(val) 
+// 返回值：b = true
+```
+
+> 源码解析
+```js
+Object.prototype.toString.call(value) === '[object Error]'
 ```
 
 ## 是否Symbol类型 - isSymbol
@@ -382,4 +393,65 @@ const b = this.api.validate.isObject(val)
 > 源码解析
 ```js
 Object.prototype.toString.call(value) === '[object Object]'
+```
+
+
+## 验证密码强度 - passwordGrade
+> 使用方式
+```js
+const val = '123456'
+this.api.validate.passwordGrade(val) 
+// 返回值：{ level: 0, msg: '弱'}
+```
+
+> 源码解析
+```js
+/**
+* 验证密码强度
+* @param {String} pwd - 密码
+*/
+passwordGrade(pwd) {
+    let score = 0;
+    let regexArr = ['[0-9]', '[a-z]', '[A-Z]', '[\\W_]'];
+    let repeatCount = 0;
+    let prevChar = '';
+    //长度一个加一分，大于18按18算
+    let len = pwd.length;
+    score += len > 18 ? 18 : len;
+    //字符类型多一个加4分
+    for (let i = 0, num = regexArr.length; i < num; i++) {
+        if (eval('/' + regexArr[i] + '/').test(pwd)) {
+            score += 4;
+        }
+    }
+    for (let i = 0, num = regexArr.length; i < num; i++) {
+        if (pwd.match(eval('/' + regexArr[i] + '/g')) && pwd.match(eval('/' + regexArr[i] + '/g')).length >= 2) {
+            score += 2;
+        }
+        if (pwd.match(eval('/' + regexArr[i] + '/g')) && pwd.match(eval('/' + regexArr[i] + '/g')).length >= 5) {
+            score += 2;
+        }
+    }
+    //重复一次减一分
+    for (let i = 0, num = pwd.length; i < num; i++) {
+        if (pwd.charAt(i) == prevChar) {
+            repeatCount++;
+        }
+        else {
+            prevChar = pwd.charAt(i);
+        }
+    }
+    score -= repeatCount * 1;
+    let level = 3
+    if (score <= 10) {
+        level = 0
+    } else if (score <= 20) {
+        level = 1
+    } else if (score <= 30) {
+        level = 2
+    }
+    return { level, msg: ['弱', '一般', '很好', '极佳'][level] }
+}
+
+验证方法来源：https://blog.csdn.net/as5005005/article/details/83674783
 ```
